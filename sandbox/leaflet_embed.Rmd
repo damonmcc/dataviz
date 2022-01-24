@@ -1,0 +1,22 @@
+---
+title: "Rmarkdown HTML including Leaflet"
+output: html_document
+---
+
+# A minimal R Markdown example
+
+To compile me, run this in R:
+> library(knitr)
+
+> knit('sandbox/leaflet_embed.Rmd')
+
+```{r leaflet-01}
+library(leaflet)
+library(widgetframe)
+
+m <- leaflet() %>%
+    addProviderTiles(providers$CartoDB.Voyager) %>%
+    setView(lat = 40.6795, lng = -73.9434, zoom = 11) # Brooklyn
+# m # Print the map
+frameWidget(m, width = "90%")
+```
